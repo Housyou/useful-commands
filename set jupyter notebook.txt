@@ -1,0 +1,14 @@
+jupyter notebook --generate-config
+// /root/.jupyter/jupyter_notebook_config.py is the configure file
+jupyter notebook password
+// set the password
+vim /root/.jupyter/jupyter_notebook_config.py
+// change these settings
+    c.NotebookApp.ip = '*' 
+    c.NotebookApp.open_browser = False
+    c.NotebookApp.port = 8888  
+    c.NotebookApp.notebook_dir = '/home/ubuntu/jupyter/'
+// jupy is the name of this screen
+screen -S jupy
+// run the jupyter notebook
+ctrl+a+d
