@@ -1,0 +1,29 @@
+sudo su
+apt install postgresql -y
+apt install postgis -y
+passwd -d postgres
+sudo -u postgres passwd
+// input passwd, i.e., 'postgres'
+su postgres
+psql
+alter user postgres with password 'postgres';
+show config_file;
+//  /etc/postgresql/9.5/main/postgresql.conf is the name of the configure file
+\q
+vim /etc/postgresql/9.5/main/postgresql.conf
+// #listen_addresses = 'localhost'         # what IP address(es) to listen on; ->
+// listen_addresses = '*'         # what IP address(es) to listen on;
+vim /etc/postgresql/9.5/main/pg_hba.conf
+// host    all             all             127.0.0.1/32            md5->
+// host    all             all             0.0.0.0/0            md5
+// #host    replication     postgres        127.0.0.1/32            md5 ->
+// host    replication     postgres        0.0.0.0/0            md5
+systemctl restart postgresql
+psql
+// gisdb is the name of the database
+CREATE DATABASE gisdb;
+\c gisdb;
+CREATE EXTENSION postgis;
+// hainan is the name of the schema
+create schema hainan;
+\q
