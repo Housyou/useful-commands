@@ -3,7 +3,7 @@ apt install postgresql -y
 apt install postgis -y
 passwd -d postgres
 sudo -u postgres passwd
-// input passwd, i.e., 'postgres'
+// input passwd, e.g., 'postgres'
 su postgres
 psql
 alter user postgres with password 'postgres';
