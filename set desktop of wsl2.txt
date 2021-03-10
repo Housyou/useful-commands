@@ -1,0 +1,8 @@
+sudo apt update
+sudo apt upgrade
+sudo apt -y install xrdp
+sudo apt -y install vnc4server
+sudo apt -y install xubuntu-desktop 
+sudo vim /etc/xrdp/xrdp.ini  #port=3389 -> port=3390
+echo xfce4-session >~/.xsession 
+sudo /etc/init.d/xrdp start
