@@ -8,6 +8,10 @@ vim /root/.jupyter/jupyter_notebook_config.py
     c.NotebookApp.open_browser = False
     c.NotebookApp.port = 8888  
     c.NotebookApp.notebook_dir = '/home/ubuntu/jupyter/'
+
+pip install jupyter_contrib_nbextensions
+jupyter contrib nbextension install --user --skip-running-check
+
 // jupy is the name of this screen
 screen -S jupy
 // run the jupyter notebook
