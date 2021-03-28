@@ -1,8 +1,36 @@
+来源：
+https://docs.microsoft.com/zh-cn/windows/wsl/install-win10
+https://zhuanlan.zhihu.com/p/49227132
+https://zhuanlan.zhihu.com/p/149501381
+
+1. 以管理员身份打开PowerShell并运行
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+2. 检查运行 WSL 2 的要求。对于 x64 系统：版本 1903 或更高版本，采用 内部版本 18362 或更高版本。如果运行的是 Windows 10 版本1903 或 1909，请在 Windows 菜单中打开“设置”，导航到“更新和安全性”，然后选择“检查更新”。 内部版本号必须是 18362.1049+ 或 18363.1049+，次要内部版本号需要高于 .1049
+3. 以管理员身份打开PowerShell并运行
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+4. 重启计算机
+5. 下载 Linux 内核更新包并安装
+https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+6. 打开 PowerShell，将 WSL 2 设置为默认版本
+wsl --set-default-version 2
+7. 打开Microsoft Store，安装Linux分发。例如
+https://www.microsoft.com/store/apps/9pjn388hp8c9
+8. 打开Ubuntu，等待安装，输入用户名和密码
+
 sudo apt update
 sudo apt upgrade
 sudo apt -y install xrdp
-sudo apt -y install vnc4server
 sudo apt -y install xubuntu-desktop 
 sudo vim /etc/xrdp/xrdp.ini  #port=3389 -> port=3390
 echo xfce4-session >~/.xsession 
 sudo /etc/init.d/xrdp start
+
+如果提示
+Errors were encountered while processing:
+blueman
+那就
+sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak
+sudo mkdir /var/lib/dpkg/info
+
+wsl2系统文件路径：
+\\wsl$
