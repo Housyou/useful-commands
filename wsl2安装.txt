@@ -32,5 +32,11 @@ blueman
 sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak
 sudo mkdir /var/lib/dpkg/info
 
+如果连接时出现xrdp_mm_process_login_response: login failed
+问题原因：远程桌面没有正确关闭，虽然在windows 系统关闭远程桌面连接，但是在里linux上的进程还在运行，导致连接数量达到上限，出现问题。
+sudo vim /etc/xrdp/sesman.ini
+将最大会话限制改为MaxSessions=50
+重启
+
 wsl2系统文件路径：
 \\wsl$
